@@ -33,7 +33,6 @@ interface
 
 uses
   ctypes,
-  cairo,
   glib2;
 
 const
