@@ -318,6 +318,7 @@ type
   PPangoScript = ^PangoScript;
 
 {$include pango_types.inc}
+{$include pango_version_macros.inc}
 
 {$include pango_language.inc}
 {$include pango_script.inc}
