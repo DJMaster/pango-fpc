@@ -32,33 +32,22 @@
 
 // G_BEGIN_DECLS
 
-// G_DEPRECATED
-function pango_split_file_list(const str: pchar): ppchar; cdecl; external LIB_PANGO;
+function pango_split_file_list(const str: pchar): ppchar; cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-function pango_trim_string(const str: pchar): pchar; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-//todo function pango_read_line(FILE *stream; str: PGString): gint; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_skip_space(const pos: ppchar): gboolean; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_scan_word(const pos: ppchar; out_: PGString): gboolean; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_scan_string(const pos: ppchar; out_: PGString): gboolean; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_scan_int(const pos: ppchar; out_: pcint): gboolean; cdecl; external LIB_PANGO;
+function pango_trim_string(const str: pchar): pchar; cdecl; external LIB_PANGO; deprecated;
+//TODO function pango_read_line(FILE *stream; str: PGString): gint; cdecl; external LIB_PANGO; deprecated;
+function pango_skip_space(const pos: ppchar): gboolean; cdecl; external LIB_PANGO; deprecated;
+function pango_scan_word(const pos: ppchar; out_: PGString): gboolean; cdecl; external LIB_PANGO; deprecated;
+function pango_scan_string(const pos: ppchar; out_: PGString): gboolean; cdecl; external LIB_PANGO; deprecated;
+function pango_scan_int(const pos: ppchar; out_: pcint): gboolean; cdecl; external LIB_PANGO; deprecated;
 
 {$ifdef PANGO_ENABLE_BACKEND}
-// G_DEPRECATED
-function pango_config_key_get_system(const key: pchar): pchar; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_config_key_get(const key: pchar): pchar; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-procedure pango_lookup_aliases(const fontname: pchar; families: pppchar; n_families: pcint); cdecl; external LIB_PANGO;
+function pango_config_key_get_system(const key: pchar): pchar; cdecl; external LIB_PANGO; deprecated;
+function pango_config_key_get(const key: pchar): pchar; cdecl; external LIB_PANGO; deprecated;
+procedure pango_lookup_aliases(const fontname: pchar; families: pppchar; n_families: pcint); cdecl; external LIB_PANGO; deprecated;
 {$endif} (* PANGO_ENABLE_BACKEND *)
 
-// G_DEPRECATED
-function pango_parse_enum(type_: GType; const str: pchar; value: pcint; warn: gboolean; possible_values: ppchar): gboolean; cdecl; external LIB_PANGO;
+function pango_parse_enum(type_: GType; const str: pchar; value: pcint; warn: gboolean; possible_values: ppchar): gboolean; cdecl; external LIB_PANGO; deprecated;
 
 (* Functions for parsing textual representations
  * of PangoFontDescription fields. They return TRUE if the input string
@@ -79,15 +68,13 @@ function pango_parse_stretch(const str: pchar; stretch: PPangoStretch; warn: gbo
  * stored in the registry). The returned string should not be
  * g_free'd.
  *)
-// G_DEPRECATED
-function pango_get_sysconf_subdirectory(): pchar; cdecl; external LIB_PANGO;
+function pango_get_sysconf_subdirectory(): pchar; cdecl; external LIB_PANGO; deprecated;
 
 (* Ditto for LIBDIR/pango. On Win32, use the same Pango
  * installation directory. This returned string should not be
  * g_free'd either.
  *)
-// G_DEPRECATED
-function pango_get_lib_subdirectory(): pchar; cdecl; external LIB_PANGO;
+function pango_get_lib_subdirectory(): pchar; cdecl; external LIB_PANGO; deprecated;
 
 {$endif} (* PANGO_ENABLE_BACKEND *)
 

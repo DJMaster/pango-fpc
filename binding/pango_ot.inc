@@ -270,88 +270,55 @@ function pango_ot_info_get_type(): GType; cdecl; external LIB_PANGO;
 function pango_ot_ruleset_get_type(): GType; cdecl; external LIB_PANGO;
 
 
-// G_DEPRECATED
-function pango_ot_info_get(face: FT_Face): PPangoOTInfo; cdecl; external LIB_PANGO;
+function pango_ot_info_get(face: FT_Face): PPangoOTInfo; cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-function pango_ot_info_find_script(info: PPangoOTInfo; table_type: PangoOTTableType; script_tag: PangoOTTag; script_index: Pguint): gboolean; cdecl; external LIB_PANGO;
+function pango_ot_info_find_script(info: PPangoOTInfo; table_type: PangoOTTableType; script_tag: PangoOTTag; script_index: Pguint): gboolean; cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-function pango_ot_info_find_language(info: PPangoOTInfo; table_type: PangoOTTableType; script_index: guint; language_tag: PangoOTTag; language_index: Pguint; required_feature_index: Pguint): gboolean; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_ot_info_find_feature(info: PPangoOTInfo; table_type: PangoOTTableType; feature_tag: PangoOTTag; script_index: guint; language_index: guint; feature_index: Pguint): gboolean; cdecl; external LIB_PANGO;
+function pango_ot_info_find_language(info: PPangoOTInfo; table_type: PangoOTTableType; script_index: guint; language_tag: PangoOTTag; language_index: Pguint; required_feature_index: Pguint): gboolean; cdecl; external LIB_PANGO; deprecated;
+function pango_ot_info_find_feature(info: PPangoOTInfo; table_type: PangoOTTableType; feature_tag: PangoOTTag; script_index: guint; language_index: guint; feature_index: Pguint): gboolean; cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-function pango_ot_info_list_scripts(info: PPangoOTInfo; table_type: PangoOTTableType): PPangoOTTag; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_ot_info_list_languages(info: PPangoOTInfo; table_type: PangoOTTableType; script_index: guint; language_tag: PangoOTTag): PPangoOTTag; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_ot_info_list_features(info: PPangoOTInfo; table_type: PangoOTTableType; tag: PangoOTTag; script_index: guint; language_index: guint): PPangoOTTag; cdecl; external LIB_PANGO;
+function pango_ot_info_list_scripts(info: PPangoOTInfo; table_type: PangoOTTableType): PPangoOTTag; cdecl; external LIB_PANGO; deprecated;
+function pango_ot_info_list_languages(info: PPangoOTInfo; table_type: PangoOTTableType; script_index: guint; language_tag: PangoOTTag): PPangoOTTag; cdecl; external LIB_PANGO; deprecated;
+function pango_ot_info_list_features(info: PPangoOTInfo; table_type: PangoOTTableType; tag: PangoOTTag; script_index: guint; language_index: guint): PPangoOTTag; cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-function pango_ot_buffer_new(font: PPangoFcFont): PPangoOTBuffer; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-procedure pango_ot_buffer_destroy(buffer: PPangoOTBuffer); cdecl; external LIB_PANGO;
-// G_DEPRECATED
-procedure pango_ot_buffer_clear(buffer: PPangoOTBuffer); cdecl; external LIB_PANGO;
-// G_DEPRECATED
-procedure pango_ot_buffer_set_rtl(buffer: PPangoOTBuffer; rtl: gboolean); cdecl; external LIB_PANGO;
-// G_DEPRECATED
-procedure pango_ot_buffer_add_glyph(buffer: PPangoOTBuffer; glyph: guint; properties: guint; cluster: guint); cdecl; external LIB_PANGO;
-// G_DEPRECATED
-procedure pango_ot_buffer_get_glyphs(const buffer: PPangoOTBuffer; glyphs: PPPangoOTGlyph; n_glyphs: pcint); cdecl; external LIB_PANGO;
-// G_DEPRECATED
-procedure pango_ot_buffer_output(const buffer: PPangoOTBuffer; glyphs: PPangoGlyphString); cdecl; external LIB_PANGO;
+function pango_ot_buffer_new(font: PPangoFcFont): PPangoOTBuffer; cdecl; external LIB_PANGO; deprecated;
+procedure pango_ot_buffer_destroy(buffer: PPangoOTBuffer); cdecl; external LIB_PANGO; deprecated;
+procedure pango_ot_buffer_clear(buffer: PPangoOTBuffer); cdecl; external LIB_PANGO; deprecated;
+procedure pango_ot_buffer_set_rtl(buffer: PPangoOTBuffer; rtl: gboolean); cdecl; external LIB_PANGO; deprecated;
+procedure pango_ot_buffer_add_glyph(buffer: PPangoOTBuffer; glyph: guint; properties: guint; cluster: guint); cdecl; external LIB_PANGO; deprecated;
+procedure pango_ot_buffer_get_glyphs(const buffer: PPangoOTBuffer; glyphs: PPPangoOTGlyph; n_glyphs: pcint); cdecl; external LIB_PANGO; deprecated;
+procedure pango_ot_buffer_output(const buffer: PPangoOTBuffer; glyphs: PPangoGlyphString); cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-procedure pango_ot_buffer_set_zero_width_marks(buffer: PPangoOTBuffer; zero_width_marks: gboolean); cdecl; external LIB_PANGO;
+procedure pango_ot_buffer_set_zero_width_marks(buffer: PPangoOTBuffer; zero_width_marks: gboolean); cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-function pango_ot_ruleset_get_for_description(info: PPangoOTInfo; const desc: PPangoOTRulesetDescription): PPangoOTRuleset; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_ot_ruleset_new(info: PPangoOTInfo): PPangoOTRuleset; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_ot_ruleset_new_for(info: PPangoOTInfo; script: PangoScript; language: PPangoLanguage): PPangoOTRuleset; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_ot_ruleset_new_from_description(info: PPangoOTInfo; const desc: PPangoOTRulesetDescription): PPangoOTRuleset; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-procedure pango_ot_ruleset_add_feature(ruleset: PPangoOTRuleset; table_type: PangoOTTableType; feature_index: guint; property_bit: gulong); cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_ot_ruleset_maybe_add_feature(ruleset: PPangoOTRuleset; table_type: PangoOTTableType; feature_tag: PangoOTTag; property_bit: gulong): gboolean; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_ot_ruleset_maybe_add_features(ruleset: PPangoOTRuleset; table_type: PangoOTTableType; const features: PPangoOTFeatureMap; n_features: guint): guint; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_ot_ruleset_get_feature_count(const ruleset: PPangoOTRuleset; n_gsub_features: Pguint; n_gpos_features: Pguint): guint; cdecl; external LIB_PANGO;
+function pango_ot_ruleset_get_for_description(info: PPangoOTInfo; const desc: PPangoOTRulesetDescription): PPangoOTRuleset; cdecl; external LIB_PANGO; deprecated;
+function pango_ot_ruleset_new(info: PPangoOTInfo): PPangoOTRuleset; cdecl; external LIB_PANGO; deprecated;
+function pango_ot_ruleset_new_for(info: PPangoOTInfo; script: PangoScript; language: PPangoLanguage): PPangoOTRuleset; cdecl; external LIB_PANGO; deprecated;
+function pango_ot_ruleset_new_from_description(info: PPangoOTInfo; const desc: PPangoOTRulesetDescription): PPangoOTRuleset; cdecl; external LIB_PANGO; deprecated;
+procedure pango_ot_ruleset_add_feature(ruleset: PPangoOTRuleset; table_type: PangoOTTableType; feature_index: guint; property_bit: gulong); cdecl; external LIB_PANGO; deprecated;
+function pango_ot_ruleset_maybe_add_feature(ruleset: PPangoOTRuleset; table_type: PangoOTTableType; feature_tag: PangoOTTag; property_bit: gulong): gboolean; cdecl; external LIB_PANGO; deprecated;
+function pango_ot_ruleset_maybe_add_features(ruleset: PPangoOTRuleset; table_type: PangoOTTableType; const features: PPangoOTFeatureMap; n_features: guint): guint; cdecl; external LIB_PANGO; deprecated;
+function pango_ot_ruleset_get_feature_count(const ruleset: PPangoOTRuleset; n_gsub_features: Pguint; n_gpos_features: Pguint): guint; cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-procedure pango_ot_ruleset_substitute(const ruleset: PPangoOTRuleset; buffer: PPangoOTBuffer); cdecl; external LIB_PANGO;
+procedure pango_ot_ruleset_substitute(const ruleset: PPangoOTRuleset; buffer: PPangoOTBuffer); cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-procedure pango_ot_ruleset_position(const ruleset: PPangoOTRuleset; buffer: PPangoOTBuffer); cdecl; external LIB_PANGO;
+procedure pango_ot_ruleset_position(const ruleset: PPangoOTRuleset; buffer: PPangoOTBuffer); cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-function pango_ot_tag_to_script(script_tag: PangoOTTag): PangoScript; cdecl; external LIB_PANGO;
+function pango_ot_tag_to_script(script_tag: PangoOTTag): PangoScript; cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-function pango_ot_tag_from_script(script: PangoScript): PangoOTTag; cdecl; external LIB_PANGO;
+function pango_ot_tag_from_script(script: PangoScript): PangoOTTag; cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-function pango_ot_tag_to_language(language_tag: PangoOTTag): PPangoLanguage; cdecl; external LIB_PANGO;
+function pango_ot_tag_to_language(language_tag: PangoOTTag): PPangoLanguage; cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-function pango_ot_tag_from_language(language: PPangoLanguage): PangoOTTag; cdecl; external LIB_PANGO;
+function pango_ot_tag_from_language(language: PPangoLanguage): PangoOTTag; cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-function pango_ot_ruleset_description_hash(const desc: PPangoOTRulesetDescription): guint; cdecl; external LIB_PANGO;
+function pango_ot_ruleset_description_hash(const desc: PPangoOTRulesetDescription): guint; cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-function pango_ot_ruleset_description_equal(const desc: PPangoOTRulesetDescription1; const desc: PPangoOTRulesetDescription2): gboolean; cdecl; external LIB_PANGO;
+function pango_ot_ruleset_description_equal(const desc: PPangoOTRulesetDescription1; const desc: PPangoOTRulesetDescription2): gboolean; cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-function pango_ot_ruleset_description_copy(const desc: PPangoOTRulesetDescription): PPangoOTRulesetDescription; cdecl; external LIB_PANGO;
+function pango_ot_ruleset_description_copy(const desc: PPangoOTRulesetDescription): PPangoOTRulesetDescription; cdecl; external LIB_PANGO; deprecated;
 
-// G_DEPRECATED
-procedure pango_ot_ruleset_description_free(desc: PPangoOTRulesetDescription); cdecl; external LIB_PANGO;
+procedure pango_ot_ruleset_description_free(desc: PPangoOTRulesetDescription); cdecl; external LIB_PANGO; deprecated;
 
 
 {$endif} (* PANGO_ENABLE_ENGINE *)

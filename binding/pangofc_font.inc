@@ -131,8 +131,7 @@ function pango_fc_font_get_glyph(font: PPangoFcFont; wc: gunichar): guint; cdecl
 {$ifndef PANGO_DISABLE_DEPRECATED}
 // G_DEPRECATED_FOR(PANGO_GET_UNKNOWN_GLYPH)
 function pango_fc_font_get_unknown_glyph(font: PPangoFcFont; wc: gunichar): PangoGlyph; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-procedure pango_fc_font_kern_glyphs(font: PPangoFcFont; glyphs: PPangoGlyphString); cdecl; external LIB_PANGO;
+procedure pango_fc_font_kern_glyphs(font: PPangoFcFont; glyphs: PPangoGlyphString); cdecl; external LIB_PANGO; deprecated;
 {$endif} (* PANGO_DISABLE_DEPRECATED *)
 
 {$endif} (* PANGO_ENABLE_ENGINE || PANGO_ENABLE_BACKEND *)

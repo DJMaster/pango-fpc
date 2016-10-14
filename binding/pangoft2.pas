@@ -106,8 +106,7 @@ function pango_ft2_font_map_create_context(fontmap: PPangoFT2FontMap): PPangoCon
 function pango_ft2_get_context(dpi_x: cdouble; dpi_y: cdouble): PPangoContext; cdecl; external LIB_PANGOFT2;
 // G_DEPRECATED_FOR(pango_ft2_font_map_new)
 function pango_ft2_font_map_for_display(): PPangoFontMap; cdecl; external LIB_PANGOFT2;
-// G_DEPRECATED
-procedure pango_ft2_shutdown_display(); cdecl; external LIB_PANGOFT2;
+procedure pango_ft2_shutdown_display(); cdecl; external LIB_PANGOFT2; deprecated;
 
 // G_DEPRECATED_FOR(PANGO_GET_UNKNOWN_GLYPH)
 function pango_ft2_get_unknown_glyph(font: PPangoFont): PangoGlyph; cdecl; external LIB_PANGOFT2;

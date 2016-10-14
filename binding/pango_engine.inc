@@ -279,8 +279,7 @@ type
  *
  * Deprecated: 1.38
  **)
-// G_DEPRECATED
-procedure script_engine_list(engines: PPPangoEngineInfo; n_engines: pcint); cdecl; external LIB_PANGO;
+procedure script_engine_list(engines: PPPangoEngineInfo; n_engines: pcint); cdecl; external LIB_PANGO; deprecated;
 
 (**
  * script_engine_init:
@@ -291,8 +290,7 @@ procedure script_engine_list(engines: PPPangoEngineInfo; n_engines: pcint); cdec
  *
  * Deprecated: 1.38
  **)
-// G_DEPRECATED
-procedure script_engine_init(module: PGTypeModule); cdecl; external LIB_PANGO;
+procedure script_engine_init(module: PGTypeModule); cdecl; external LIB_PANGO; deprecated;
 
 (**
  * script_engine_exit:
@@ -301,8 +299,7 @@ procedure script_engine_init(module: PGTypeModule); cdecl; external LIB_PANGO;
  *
  * Deprecated: 1.38
  **)
-// G_DEPRECATED
-procedure script_engine_exit(); cdecl; external LIB_PANGO;
+procedure script_engine_exit(); cdecl; external LIB_PANGO; deprecated;
 
 (**
  * script_engine_create:
@@ -312,8 +309,7 @@ procedure script_engine_exit(); cdecl; external LIB_PANGO;
  *
  * Deprecated: 1.38
  **)
-// G_DEPRECATED
-function script_engine_create(const id: Pchar): PPangoEngine; cdecl; external LIB_PANGO;
+function script_engine_create(const id: Pchar): PPangoEngine; cdecl; external LIB_PANGO; deprecated;
 
 (* Utility macro used by PANGO_ENGINE_LANG_DEFINE_TYPE and
  * PANGO_ENGINE_LANG_DEFINE_TYPE

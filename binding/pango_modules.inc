@@ -64,14 +64,10 @@ type
   end;
   PPangoIncludedModule = ^PangoIncludedModule;
 
-// G_DEPRECATED
-function pango_find_map(language: PPangoLanguage; engine_type_id: guint; render_type_id: guint): PPangoMap; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-function pango_map_get_engine(map: PPangoMap; script: PangoScript): PPangoEngine; cdecl; external LIB_PANGO;
-// G_DEPRECATED
-procedure pango_map_get_engines(map: PPangoMap; script: PangoScript; *exact_engines: PGSList; *fallback_engines: PGSList); cdecl; external LIB_PANGO;
-// G_DEPRECATED
-procedure pango_module_register(module: PPangoIncludedModule); cdecl; external LIB_PANGO;
+function pango_find_map(language: PPangoLanguage; engine_type_id: guint; render_type_id: guint): PPangoMap; cdecl; external LIB_PANGO; deprecated;
+function pango_map_get_engine(map: PPangoMap; script: PangoScript): PPangoEngine; cdecl; external LIB_PANGO; deprecated;
+procedure pango_map_get_engines(map: PPangoMap; script: PangoScript; *exact_engines: PGSList; *fallback_engines: PGSList); cdecl; external LIB_PANGO; deprecated;
+procedure pango_module_register(module: PPangoIncludedModule); cdecl; external LIB_PANGO; deprecated;
 
 {$endif} (* PANGO_ENABLE_BACKEND *)
 
