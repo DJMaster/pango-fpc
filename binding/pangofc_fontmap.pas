@@ -36,6 +36,9 @@ uses
   pangoft2,
   glib2;
 
+const
+  LIB_PANGOFT2 = 'libpangoft2-1.0-0.dll';
+
 // #include <fontconfig/fontconfig.h>
 type
   FcCharSet = record
@@ -47,9 +50,9 @@ type
   FcConfig = record
   end;
 
+
 {$include pangofc_font.inc}
 {$include pangofc_decoder.inc}
-
 
 // G_BEGIN_DECLS
 
@@ -69,12 +72,12 @@ type
   PangoFcFontsetKey = record
   end;
 
-function pango_fc_fontset_key_get_language(const key: PPangoFcFontsetKey): PPangoLanguage; cdecl; external LIB_PANGO;
-function pango_fc_fontset_key_get_description(const key: PPangoFcFontsetKey): PPangoFontDescription; cdecl; external LIB_PANGO;
-function pango_fc_fontset_key_get_matrix(const key: PPangoFcFontsetKey): PPangoMatrix; cdecl; external LIB_PANGO;
-function pango_fc_fontset_key_get_absolute_size(const key: PPangoFcFontsetKey): cdouble; cdecl; external LIB_PANGO;
-function pango_fc_fontset_key_get_resolution(const key: PPangoFcFontsetKey): cdouble; cdecl; external LIB_PANGO;
-function pango_fc_fontset_key_get_context_key(const key: PPangoFcFontsetKey): gpointer; cdecl; external LIB_PANGO;
+function pango_fc_fontset_key_get_language(const key: PPangoFcFontsetKey): PPangoLanguage; cdecl; external LIB_PANGOFT2;
+function pango_fc_fontset_key_get_description(const key: PPangoFcFontsetKey): PPangoFontDescription; cdecl; external LIB_PANGOFT2;
+function pango_fc_fontset_key_get_matrix(const key: PPangoFcFontsetKey): PPangoMatrix; cdecl; external LIB_PANGOFT2;
+function pango_fc_fontset_key_get_absolute_size(const key: PPangoFcFontsetKey): cdouble; cdecl; external LIB_PANGOFT2;
+function pango_fc_fontset_key_get_resolution(const key: PPangoFcFontsetKey): cdouble; cdecl; external LIB_PANGOFT2;
+function pango_fc_fontset_key_get_context_key(const key: PPangoFcFontsetKey): gpointer; cdecl; external LIB_PANGOFT2;
 
 (**
  * PangoFcFontKey:
@@ -89,9 +92,9 @@ type
   PangoFcFontKey = record
   end;
 
-function pango_fc_font_key_get_pattern(const key: PPangoFcFontKey): PFcPattern; cdecl; external LIB_PANGO;
-function pango_fc_font_key_get_matrix(const key: PPangoFcFontKey): PPangoMatrix; cdecl; external LIB_PANGO;
-function pango_fc_font_key_get_context_key(const key: PPangoFcFontKey): gpointer; cdecl; external LIB_PANGO;
+function pango_fc_font_key_get_pattern(const key: PPangoFcFontKey): PFcPattern; cdecl; external LIB_PANGOFT2;
+function pango_fc_font_key_get_matrix(const key: PPangoFcFontKey): PPangoMatrix; cdecl; external LIB_PANGOFT2;
+function pango_fc_font_key_get_context_key(const key: PPangoFcFontKey): gpointer; cdecl; external LIB_PANGOFT2;
 
 {.$endif}
 
@@ -211,20 +214,20 @@ type
 
 {$ifndef PANGO_DISABLE_DEPRECATED}
 // G_DEPRECATED_FOR(pango_font_map_create_context)
-function pango_fc_font_map_create_context(fcfontmap: PPangoFcFontMap): PPangoContext; cdecl; external LIB_PANGO;
+function pango_fc_font_map_create_context(fcfontmap: PPangoFcFontMap): PPangoContext; cdecl; external LIB_PANGOFT2;
 {$endif}
-procedure pango_fc_font_map_shutdown(fcfontmap: PPangoFcFontMap); cdecl; external LIB_PANGO;
+procedure pango_fc_font_map_shutdown(fcfontmap: PPangoFcFontMap); cdecl; external LIB_PANGOFT2;
 
 {.$endif}
 
-function pango_fc_font_map_get_type(): GType; cdecl; external LIB_PANGO;
+function pango_fc_font_map_get_type(): GType; cdecl; external LIB_PANGOFT2;
 
-procedure pango_fc_font_map_cache_clear(fcfontmap: PPangoFcFontMap); cdecl; external LIB_PANGO;
+procedure pango_fc_font_map_cache_clear(fcfontmap: PPangoFcFontMap); cdecl; external LIB_PANGOFT2;
 
-procedure pango_fc_font_map_config_changed(fcfontmap: PPangoFcFontMap); cdecl; external LIB_PANGO;
+procedure pango_fc_font_map_config_changed(fcfontmap: PPangoFcFontMap); cdecl; external LIB_PANGOFT2;
 
-procedure pango_fc_font_map_set_config(fcfontmap: PPangoFcFontMap; fcconfig: PFcConfig); cdecl; external LIB_PANGO;
-function pango_fc_font_map_get_config(fcfontmap: PPangoFcFontMap): PFcConfig; cdecl; external LIB_PANGO;
+procedure pango_fc_font_map_set_config(fcfontmap: PPangoFcFontMap; fcconfig: PFcConfig); cdecl; external LIB_PANGOFT2;
+function pango_fc_font_map_get_config(fcfontmap: PPangoFcFontMap): PFcConfig; cdecl; external LIB_PANGOFT2;
 
 (**
  * PangoFcDecoderFindFunc:
@@ -238,10 +241,10 @@ function pango_fc_font_map_get_config(fcfontmap: PPangoFcFontMap): PFcConfig; cd
 type
   PangoFcDecoderFindFunc = function (pattern: PFcPattern; user_data: gpointer): PPangoFcDecoder; cdecl;
 
-procedure pango_fc_font_map_add_decoder_find_func(fcfontmap: PPangoFcFontMap; findfunc: PangoFcDecoderFindFunc; user_data: gpointer; dnotify: GDestroyNotify); cdecl; external LIB_PANGO;
-function pango_fc_font_map_find_decoder(fcfontmap: PPangoFcFontMap; pattern: PFcPattern): PPangoFcDecoder; cdecl; external LIB_PANGO;
+procedure pango_fc_font_map_add_decoder_find_func(fcfontmap: PPangoFcFontMap; findfunc: PangoFcDecoderFindFunc; user_data: gpointer; dnotify: GDestroyNotify); cdecl; external LIB_PANGOFT2;
+function pango_fc_font_map_find_decoder(fcfontmap: PPangoFcFontMap; pattern: PFcPattern): PPangoFcDecoder; cdecl; external LIB_PANGOFT2;
 
-function pango_fc_font_description_from_pattern(pattern: PFcPattern; include_size: gboolean): PPangoFontDescription; cdecl; external LIB_PANGO;
+function pango_fc_font_description_from_pattern(pattern: PFcPattern; include_size: gboolean): PPangoFontDescription; cdecl; external LIB_PANGOFT2;
 
 (**
  * PANGO_FC_GRAVITY:
