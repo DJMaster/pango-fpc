@@ -41,9 +41,10 @@ type
   PPangoEngineShape = ^PangoEngineShape;
 
 type
-  PangoFont = record
-  end;
   PPangoFont = ^PangoFont;
+  PangoFont = record
+    parent_instance: GObject;
+  end;
 
   PangoFontMap = record
   end;

@@ -23,18 +23,38 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,  * Boston, MA 02111-1307, USA.
  *)
 
-// #ifndef __PANGO_FC_FONT_MAP_H__
-// #define __PANGO_FC_FONT_MAP_H__
+unit pangofc_fontmap;
 
-// #include <pango/pango.h>
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  ctypes,
+  pango,
+  freetype,
+  pangoft2,
+  glib2;
+
 // #include <fontconfig/fontconfig.h>
-// #include <pango/pangofc-decoder.h>
-// #include <pango/pangofc-font.h>
+type
+  FcCharSet = record
+    dummy : integer;
+  end;
+  PFcCharSet = ^FcCharSet;
+
+  PFcConfig = ^FcConfig;
+  FcConfig = record
+  end;
+
+{$include pangofc_font.inc}
+{$include pangofc_decoder.inc}
+
 
 // G_BEGIN_DECLS
 
 
-{$ifdef PANGO_ENABLE_BACKEND}
+{.$ifdef PANGO_ENABLE_BACKEND}
 
 (**
  * PangoFcFontsetKey:
@@ -45,9 +65,9 @@
  * Since: 1.24
  **)
 type
+  PPangoFcFontsetKey = ^PangoFcFontsetKey;
   PangoFcFontsetKey = record
   end;
-  PPangoFcFontsetKey = ^PangoFcFontsetKey;
 
 function pango_fc_fontset_key_get_language(const key: PPangoFcFontsetKey): PPangoLanguage; cdecl; external LIB_PANGO;
 function pango_fc_fontset_key_get_description(const key: PPangoFcFontsetKey): PPangoFontDescription; cdecl; external LIB_PANGO;
@@ -65,15 +85,15 @@ function pango_fc_fontset_key_get_context_key(const key: PPangoFcFontsetKey): gp
  * Since: 1.24
  **)
 type
+  PPangoFcFontKey = ^PangoFcFontKey;
   PangoFcFontKey = record
   end;
-  PPangoFcFontKey = ^PangoFcFontKey;
 
 function pango_fc_font_key_get_pattern(const key: PPangoFcFontKey): PFcPattern; cdecl; external LIB_PANGO;
 function pango_fc_font_key_get_matrix(const key: PPangoFcFontKey): PPangoMatrix; cdecl; external LIB_PANGO;
 function pango_fc_font_key_get_context_key(const key: PPangoFcFontKey): gpointer; cdecl; external LIB_PANGO;
 
-{$endif}
+{.$endif}
 
 
 (*
@@ -85,15 +105,15 @@ function pango_fc_font_key_get_context_key(const key: PPangoFcFontKey): gpointer
 //todo #define PANGO_IS_FC_FONT_MAP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), PANGO_TYPE_FC_FONT_MAP))
 
 type
-  PangoFcFontMapClass = record
-  end;
-  PPangoFcFontMapClass = ^PangoFcFontMapClass;
+//  PPangoFcFontMapClass = ^PangoFcFontMapClass;
+//  PangoFcFontMapClass = record
+//  end;
 
+  PPangoFcFontMapPrivate = ^PangoFcFontMapPrivate;
   PangoFcFontMapPrivate = record
   end;
-  PPangoFcFontMapPrivate = ^PangoFcFontMapPrivate;
 
-{$ifdef PANGO_ENABLE_BACKEND}
+{.$ifdef PANGO_ENABLE_BACKEND}
 
 //todo #define PANGO_FC_FONT_MAP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), PANGO_TYPE_FC_FONT_MAP, PangoFcFontMapClass))
 //todo #define PANGO_IS_FC_FONT_MAP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PANGO_TYPE_FC_FONT_MAP))
@@ -109,12 +129,12 @@ type
  * instance deriving from #PangoFcFont.
  **)
 type
+  PPangoFcFontMap = ^PangoFcFontMap;
   PangoFcFontMap = record
     parent_instance: PangoFontMap;
 
     priv: PPangoFcFontMapPrivate;
   end;
-  PPangoFcFontMap = ^PangoFcFontMap;
 
 (**
  * PangoFcFontMapClass:
@@ -166,20 +186,20 @@ type
   
     (*< public >*)
     (* Deprecated in favor of fontset_key_substitute *)
-    void         (*default_substitute) (PangoFcFontMap *fontmap,           FcPattern *pattern);
+    default_substitute: procedure (fontmap: PPangoFcFontMap; pattern: PFcPattern); cdecl;
     (* Deprecated in favor of create_font *)
-    PangoFcFont *(*new_font)          (PangoFcFontMap *fontmap,           FcPattern *pattern);
+    new_font: function (fontmap: PPangoFcFontMap; pattern: PFcPattern): PPangoFcFont; cdecl; // deprecated
+
+    get_resolution: function (fcfontmap: PPangoFcFontMap; context: PPangoContext): cdouble; cdecl;
   
-    double       (*get_resolution)     (PangoFcFontMap *fcfontmap,           PangoContext *context);
-  
-    gconstpointer (*context_key_get)   (PangoFcFontMap *fcfontmap,           PangoContext *context);
-    gpointer     (*context_key_copy)   (PangoFcFontMap *fcfontmap,           gconstpointer               key);
-    void         (*context_key_free)   (PangoFcFontMap *fcfontmap,           gpointer                    key);
-    guint32      (*context_key_hash)   (PangoFcFontMap *fcfontmap,           gconstpointer               key);
-    gboolean     (*context_key_equal)  (PangoFcFontMap *fcfontmap,           gconstpointer               key_a,           gconstpointer               key_b);
-  
-    void         (*fontset_key_substitute)(PangoFcFontMap *fontmap,           PangoFcFontsetKey *fontsetkey,           FcPattern *pattern);
-    PangoFcFont *(*create_font)       (PangoFcFontMap *fontmap,           PangoFcFontKey *fontkey);
+    context_key_get: function (fcfontmap: PPangoFcFontMap; context: PPangoContext): gconstpointer; cdecl;
+    context_key_copy: function (fcfontmap: PPangoFcFontMap; key: gconstpointer): gpointer; cdecl;
+    context_key_free: procedure (fcfontmap: PPangoFcFontMap; key: gpointer); cdecl;
+    context_key_hash: function (fcfontmap: PPangoFcFontMap; key: gconstpointer): guint32; cdecl;
+    context_key_equal: function (fcfontmap: PPangoFcFontMap; key_a: gconstpointer; key_b: gconstpointer): gboolean; cdecl;
+
+    fontset_key_substitute: procedure (fontmap: PPangoFcFontMap; fontsetkey: PPangoFcFontsetKey; pattern: PFcPattern); cdecl;
+    create_font: function (fontmap: PPangoFcFontMap; fontkey: PPangoFcFontKey): PPangoFcFont; cdecl;
     (*< private >*)
   
     (* Padding for future expansion *)
@@ -195,7 +215,7 @@ function pango_fc_font_map_create_context(fcfontmap: PPangoFcFontMap): PPangoCon
 {$endif}
 procedure pango_fc_font_map_shutdown(fcfontmap: PPangoFcFontMap); cdecl; external LIB_PANGO;
 
-{$endif}
+{.$endif}
 
 function pango_fc_font_map_get_type(): GType; cdecl; external LIB_PANGO;
 
@@ -293,4 +313,9 @@ const
 
 // G_END_DECLS
 
-// #endif (* __PANGO_FC_FONT_MAP_H__ *)
+
+implementation
+
+
+end.
+

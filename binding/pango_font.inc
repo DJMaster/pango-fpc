@@ -503,16 +503,11 @@ function pango_font_get_metrics(font: PPangoFont; language: PPangoLanguage): PPa
 procedure pango_font_get_glyph_extents(font: PPangoFont; glyph: PangoGlyph; ink_rect: PPangoRectangle; logical_rect: PPangoRectangle); cdecl; external LIB_PANGO;
 function pango_font_get_font_map(font: PPangoFont): PPangoFontMap; cdecl; external LIB_PANGO;
 
-{$ifdef PANGO_ENABLE_BACKEND}
+{.$ifdef PANGO_ENABLE_BACKEND}
 
 //todo #define PANGO_FONT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), PANGO_TYPE_FONT, PangoFontClass))
 //todo #define PANGO_IS_FONT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PANGO_TYPE_FONT))
 //todo #define PANGO_FONT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), PANGO_TYPE_FONT, PangoFontClass))
-
-type
-  PangoFontClass = record
-  end;
-  PPangoFontClass = ^PangoFontClass;
 
 (**
  * PangoFont:
@@ -530,10 +525,10 @@ type
  * which the implementation fills in.
  *)
 type
-  PangoFont = record
-    parent_instance: GObject;
-  end;
-  PPangoFont = ^PangoFont;
+//  PPangoFont = ^PangoFont;
+//  PangoFont = record
+//    parent_instance: GObject;
+//  end;
 
   PangoFontClass = record
     parent_class: GObjectClass;
@@ -561,7 +556,7 @@ const
   PANGO_UNKNOWN_GLYPH_WIDTH = 10;
   PANGO_UNKNOWN_GLYPH_HEIGHT = 14;
 
-{$endif} (* PANGO_ENABLE_BACKEND *)
+{.$endif} (* PANGO_ENABLE_BACKEND *)
 
 (**
  * PANGO_GLYPH_EMPTY:

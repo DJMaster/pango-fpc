@@ -37,7 +37,7 @@
 //todo #define PANGO_FC_FONT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), PANGO_TYPE_FC_FONT, PangoFcFont))
 //todo #define PANGO_IS_FC_FONT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), PANGO_TYPE_FC_FONT))
 
-{$if defined(PANGO_ENABLE_ENGINE) or defined(PANGO_ENABLE_BACKEND)}
+{.$if defined(PANGO_ENABLE_ENGINE) or defined(PANGO_ENABLE_BACKEND)}
 
 (**
  * PANGO_RENDER_TYPE_FC:
@@ -49,7 +49,7 @@
 const
   PANGO_RENDER_TYPE_FC = 'PangoRenderFc';
 
-{$ifdef PANGO_ENABLE_BACKEND}
+{.$ifdef PANGO_ENABLE_BACKEND}
 
 //todo #define PANGO_FC_FONT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), PANGO_TYPE_FC_FONT, PangoFcFontClass))
 //todo #define PANGO_IS_FC_FONT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), PANGO_TYPE_FC_FONT))
@@ -66,6 +66,7 @@ const
  * virtual function from #PangoFont.
  **)
 type
+  PPangoFcFont = ^PangoFcFont;
   PangoFcFont = record
     parent_instance: PangoFont;
   
@@ -77,10 +78,9 @@ type
   
     metrics_by_lang: PGSList;
   
-    is_hinted: guint = 1;
-    is_transformed: guint = 1;
+    is_hinted: guint; // = 1
+    is_transformed: guint; // = 1
   end;
-  PPangoFcFont = ^PangoFcFont;
 
 (**
  * PangoFcFontClass:
@@ -103,6 +103,7 @@ type
  * Class structure for #PangoFcFont.
  **)
 type
+  PPangoFcFontClass = ^PangoFcFontClass;
   PangoFcFontClass = record
     (*< private >*)
     parent_class: PangoFontClass;
@@ -122,9 +123,8 @@ type
     _pango_reserved3: procedure(); cdecl;
     _pango_reserved4: procedure(); cdecl;
   end;
-  PPangoFcFontClass = ^PangoFcFontClass;
 
-{$endif} (* PANGO_ENABLE_BACKEND *)
+{.$endif} (* PANGO_ENABLE_BACKEND *)
 
 function pango_fc_font_has_char(font: PPangoFcFont; wc: gunichar): gboolean; cdecl; external LIB_PANGO;
 function pango_fc_font_get_glyph(font: PPangoFcFont; wc: gunichar): guint; cdecl; external LIB_PANGO;
@@ -134,7 +134,7 @@ function pango_fc_font_get_unknown_glyph(font: PPangoFcFont; wc: gunichar): Pang
 procedure pango_fc_font_kern_glyphs(font: PPangoFcFont; glyphs: PPangoGlyphString); cdecl; external LIB_PANGO; deprecated;
 {$endif} (* PANGO_DISABLE_DEPRECATED *)
 
-{$endif} (* PANGO_ENABLE_ENGINE || PANGO_ENABLE_BACKEND *)
+{.$endif} (* PANGO_ENABLE_ENGINE || PANGO_ENABLE_BACKEND *)
 
 function pango_fc_font_get_type(): GType; cdecl; external LIB_PANGO;
 

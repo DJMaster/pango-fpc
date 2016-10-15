@@ -32,8 +32,8 @@ interface
 
 uses
   ctypes,
-  freetype,
   pango,
+  freetypeh,
   glib2;
 
 const
@@ -44,6 +44,14 @@ const
 
 // #include <pango/pango-layout.h>
 // #include <pango/pangofc-font.h>
+
+type
+  PFT_Bitmap = ^FT_Bitmap;
+  FT_Face = TFT_Face;
+  //todo: properly define FcPattern:
+  //It will require translate FontConfig header
+  FcPattern = pointer;
+  PFcPattern = ^FcPattern;
 
 // G_BEGIN_DECLS
 
@@ -63,9 +71,9 @@ const
 //todo #define PANGO_FT2_IS_FONT_MAP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), PANGO_TYPE_FT2_FONT_MAP))
 
 type
+  PPangoFT2FontMap = ^PangoFT2FontMap;
   PangoFT2FontMap = record
   end;
-  PPangoFT2FontMap = ^PangoFT2FontMap;
 
 (**
  * PangoFT2SubstituteFunc:

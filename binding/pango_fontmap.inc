@@ -65,7 +65,7 @@ procedure pango_font_map_list_families(fontmap: PPangoFontMap; families: PPPPang
 function pango_font_map_get_serial(fontmap: PPangoFontMap): guint; cdecl; external LIB_PANGO;
 procedure pango_font_map_changed(fontmap: PPangoFontMap); cdecl; external LIB_PANGO;
 
-{$ifdef PANGO_ENABLE_BACKEND}
+{.$ifdef PANGO_ENABLE_BACKEND}
 
 (**
  * PANGO_FONT_MAP_CLASS:
@@ -104,11 +104,11 @@ procedure pango_font_map_changed(fontmap: PPangoFontMap); cdecl; external LIB_PA
  * The #PangoFontMap structure contains one member which the implementation
  * fills in.
  *)
-type
-  PangoFontMap = record
-    parent_instance: GObject;
-  end;
-  PPangoFontMap = ^PangoFontMap;
+//type
+//  PPangoFontMap = ^PangoFontMap;
+//  PangoFontMap = record
+//    parent_instance: GObject;
+//  end;
 
 (**
  * PangoFontMapClass:
@@ -153,7 +153,7 @@ type
 
 function pango_font_map_get_shape_engine_type(fontmap: PPangoFontMap): Pchar; cdecl; external LIB_PANGO;
 
-{$endif} (* PANGO_ENABLE_BACKEND *)
+{.$endif} (* PANGO_ENABLE_BACKEND *)
 
 // G_END_DECLS
 
