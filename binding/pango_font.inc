@@ -14,22 +14,35 @@
  * License as published by the Free Software Foundation; either
  * version 2 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful,  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Library General Public License for more details.
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,  * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
  *)
 
-// #ifndef __PANGO_FONT_H__
-// #define __PANGO_FONT_H__
+// #ifndef __PANGO_FC_FONT_H__
+// #define __PANGO_FC_FONT_H__
 
-// #include <pango/pango-coverage.h>
-// #include <pango/pango-types.h>
+// #include <pango/pango.h>
 
-// #include <glib-object.h>
+(* Freetype has undefined macros in its header *)
+//TODO #ifdef PANGO_COMPILATION
+//TODO #pragma GCC diagnostic push
+//TODO #pragma GCC diagnostic ignored "-Wundef"
+//TODO #endif
+
+// #include <ft2build.h>
+// #include FT_FREETYPE_H
+// #include <fontconfig/fontconfig.h>
+
+//TODO #ifdef PANGO_COMPILATION
+//TODO #pragma GCC diagnostic pop
+//TODO #endif
 
 // G_BEGIN_DECLS
 

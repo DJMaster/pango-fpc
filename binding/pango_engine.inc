@@ -14,13 +14,15 @@
  * License as published by the Free Software Foundation; either
  * version 2 of the License, or (at your option) any later version.
  *
- * This library is distributed in the hope that it will be useful,  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Library General Public License for more details.
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,  * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
  *)
 
 // #ifndef __PANGO_ENGINE_H__
@@ -165,7 +167,7 @@ const
 //todo #define PANGO_ENGINE_SHAPE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), PANGO_TYPE_ENGINE_SHAPE, PangoEngineShapeClass))
 
 (**
- * PangoEngineShape
+ * PangoEngineShape:
  *
  * The #PangoEngineShape class is implemented by engines that
  * customize the rendering-system dependent part of the
@@ -224,7 +226,7 @@ function pango_engine_shape_get_type(): GType; cdecl; external LIB_PANGO;
 
 
 (**
- * PangoEngineScriptInfo
+ * PangoEngineScriptInfo:
  * @script: a #PangoScript. The value %PANGO_SCRIPT_COMMON has
  * the special meaning here of "all scripts"
  * @langs: a semicolon separated list of languages that this
@@ -271,7 +273,7 @@ type
   PPangoEngineInfo = ^PangoEngineInfo;
 
 (**
- * script_engine_list:
+ * script_engine_list: (skip)
  * @engines: location to store a pointer to an array of engines.
  * @n_engines: location to store the number of elements in @engines.
  *
@@ -282,7 +284,7 @@ type
 procedure script_engine_list(engines: PPPangoEngineInfo; n_engines: pcint); cdecl; external LIB_PANGO; deprecated;
 
 (**
- * script_engine_init:
+ * script_engine_init: (skip)
  * @module: a #GTypeModule structure used to associate any
  *  GObject types created in this module with the module.
  *
@@ -293,7 +295,7 @@ procedure script_engine_list(engines: PPPangoEngineInfo; n_engines: pcint); cdec
 procedure script_engine_init(module: PGTypeModule); cdecl; external LIB_PANGO; deprecated;
 
 (**
- * script_engine_exit:
+ * script_engine_exit: (skip)
  *
  * Do not use.
  *
@@ -302,7 +304,7 @@ procedure script_engine_init(module: PGTypeModule); cdecl; external LIB_PANGO; d
 procedure script_engine_exit(); cdecl; external LIB_PANGO; deprecated;
 
 (**
- * script_engine_create:
+ * script_engine_create: (skip)
  * @id: the ID of an engine as reported by script_engine_list.
  *
  * Do not use.
