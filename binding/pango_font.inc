@@ -549,8 +549,8 @@ type
     (*< public >*)
   
     describe: function(font: PPangoFont): PPangoFontDescription; cdecl;
-    get_coverage: function(font: PPangoFont; lang: PPangoLanguage): PPangoCoverage; cdecl;
-    find_shaper: function(font: PPangoFont; lang: PPangoLanguage; ch: guint32): PPangoEngineShape; cdecl;
+    get_coverage: function(font: PPangoFont; language: PPangoLanguage): PPangoCoverage; cdecl;
+    find_shaper: function(font: PPangoFont; language: PPangoLanguage; ch: guint32): PPangoEngineShape; cdecl;
     get_glyph_extents: procedure(font: PPangoFont; glyph: PangoGlyph; ink_rect: PPangoRectangle; logical_rect: PPangoRectangle); cdecl;
     get_metrics: function(font: PPangoFont; language: PPangoLanguage): PPangoFontMetrics; cdecl;
     get_font_map: function(font: PPangoFont): PPangoFontMap; cdecl;
